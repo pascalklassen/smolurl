@@ -4,6 +4,12 @@ import { SignUpButton } from "@clerk/nextjs";
 import { BarChart3, Link2, QrCode, ShieldCheck, Zap } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 const features = [
   {
@@ -64,14 +70,13 @@ export default async function Home() {
       <section className="border-t border-border px-6 py-20">
         <div className="mx-auto grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {features.map(({ icon: Icon, title, description }) => (
-            <div
-              key={title}
-              className="flex flex-col gap-3 rounded-lg border border-border bg-card p-6 text-card-foreground"
-            >
-              <Icon className="size-6 text-primary" />
-              <h2 className="text-lg font-medium">{title}</h2>
-              <p className="text-sm text-muted-foreground">{description}</p>
-            </div>
+            <Card key={title}>
+              <CardHeader>
+                <Icon className="size-6 text-primary" />
+                <CardTitle>{title}</CardTitle>
+                <CardDescription>{description}</CardDescription>
+              </CardHeader>
+            </Card>
           ))}
         </div>
       </section>
