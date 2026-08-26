@@ -1,6 +1,42 @@
-import Image from "next/image";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
+import { SignUpButton } from "@clerk/nextjs";
+import { BarChart3, Link2, QrCode, ShieldCheck, Zap } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+
+const features = [
+  {
+    icon: Link2,
+    title: "Custom short links",
+    description:
+      "Turn long, unwieldy URLs into short, memorable links with your own custom alias.",
+  },
+  {
+    icon: Zap,
+    title: "Lightning-fast redirects",
+    description:
+      "Every short link resolves instantly, so your audience never waits to reach their destination.",
+  },
+  {
+    icon: BarChart3,
+    title: "Click analytics",
+    description:
+      "See how your links perform with clear, real-time click tracking for every short URL you create.",
+  },
+  {
+    icon: QrCode,
+    title: "QR codes included",
+    description:
+      "Generate a QR code for any short link, perfect for print, packaging, or in-person sharing.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Secure by default",
+    description:
+      "Your account and links are protected with Clerk-powered authentication out of the box.",
+  },
+];
 
 export default async function Home() {
   const { userId } = await auth();
@@ -9,68 +45,36 @@ export default async function Home() {
   }
 
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="flex flex-1 flex-col">
+      <section className="flex flex-col items-center gap-6 px-6 py-24 text-center sm:py-32">
+        <h1 className="max-w-2xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
+          Shorten your links. Amplify your reach.
+        </h1>
+        <p className="max-w-xl text-lg text-muted-foreground text-balance">
+          smolurl turns long links into short, trackable URLs in seconds, so
+          you can share with confidence and see exactly how they perform.
+        </p>
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <SignUpButton mode="modal">
+            <Button size="lg">Get started for free</Button>
+          </SignUpButton>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section className="border-t border-border px-6 py-20">
+        <div className="mx-auto grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {features.map(({ icon: Icon, title, description }) => (
+            <div
+              key={title}
+              className="flex flex-col gap-3 rounded-lg border border-border bg-card p-6 text-card-foreground"
+            >
+              <Icon className="size-6 text-primary" />
+              <h2 className="text-lg font-medium">{title}</h2>
+              <p className="text-sm text-muted-foreground">{description}</p>
+            </div>
+          ))}
         </div>
-      </main>
+      </section>
     </div>
   );
 }
