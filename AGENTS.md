@@ -7,3 +7,49 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+
+# smolurl — Agent Instructions
+
+> [!IMPORTANT]
+> The compatibility warning above is part of this repo's rules, not a standalone notice:
+> this project runs a modified Next.js 16, so read the relevant guide in
+> `node_modules/next/dist/docs/` for framework behavior, **and** read the matching file(s)
+> under [docs/](docs/) (see "Documentation" below) for this app's own conventions —
+> BEFORE writing any code, every time, no exceptions.
+
+## Project Overview
+
+`smolurl` is a Next.js 16 (App Router) application using:
+
+- **Auth:** Clerk (`@clerk/nextjs`)
+- **Database:** Drizzle ORM on Neon serverless Postgres
+- **UI:** Tailwind CSS v4 + shadcn/ui (`base-nova` style) on top of Base UI
+  (`@base-ui/react`) primitives
+- **Language:** TypeScript in strict mode
+
+The app is early-stage: [db/schema.ts](db/schema.ts) is not yet populated and
+`app/(in-app)/page.tsx` still has the default `create-next-app` starter content.
+
+> [!IMPORTANT]
+> **Terminal & Commands:** only run commands in the command prompt — do not use
+> PowerShell or any other terminal.
+
+## Documentation
+
+Detailed, topic-specific conventions live under [docs/](docs/). ALWAYS read the
+relevant file(s) BEFORE writing ANY code in that area — this is required, not
+optional, and applies even for small or seemingly obvious changes:
+
+- [docs/authentication.md](docs/authentication.md) — Clerk auth, protected routes, modal sign-in/sign-up
+- [docs/ui-components.md](docs/ui-components.md) — shadcn/ui-only components, no custom UI
+
+## Coding Standards (summary)
+
+- Match the existing project structure: routes in `app/`, shared UI in
+  `components/`, data access in `db/`, small helpers in `lib/`.
+- Prefer editing/extending existing files over creating new ones; only split code
+  into a new file when it doesn't fit an existing module's purpose.
+- Keep components as Server Components unless client-only APIs are required.
+- Use the `@/*` import alias instead of relative paths that cross multiple
+  directories.
+- Run `npm run lint` after making changes.
