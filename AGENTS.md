@@ -19,7 +19,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 ## Project Overview
 
-`smolurl` is a Next.js 16 (App Router) application using:
+`smolurl` is a Next.js 16 (App Router) URL-shortening application using:
 
 - **Auth:** Clerk (`@clerk/nextjs`)
 - **Database:** Drizzle ORM on Neon serverless Postgres
