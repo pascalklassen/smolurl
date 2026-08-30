@@ -1,3 +1,8 @@
+---
+description: Read this document before implementing or modifying authentication in the app.
+---
+
+
 # Authentication
 
 All authentication in this app is handled exclusively by **Clerk**
@@ -48,6 +53,6 @@ NextAuth, Passport, hand-rolled JWT/cookie auth, etc.).
 
 ## Provider setup
 
-- `ClerkProvider` wraps the app in [app/(in-app)/layout.tsx](../app/(in-app)/layout.tsx).
+- `ClerkProvider` wraps the app in `app/(in-app)/layout.tsx`.
   Keep all Clerk components (`SignInButton`, `SignUpButton`, `UserButton`,
   `SignedIn`/`SignedOut` or `Show`) inside this provider.
