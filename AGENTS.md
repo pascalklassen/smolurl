@@ -31,8 +31,7 @@ The app is early-stage: [db/schema.ts](db/schema.ts) is not yet populated and
 `app/(in-app)/page.tsx` still has the default `create-next-app` starter content.
 
 > [!IMPORTANT]
-> **Terminal & Commands:** only run commands in the command prompt — do not use
-> PowerShell or any other terminal.
+> **Terminal & Commands:** When in a windows environent, only run commands in the command prompt — do not > use PowerShell or any other terminal.
 
 ## Documentation
 
