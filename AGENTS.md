@@ -13,9 +13,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 > [!IMPORTANT]
 > The compatibility warning above is part of this repo's rules, not a standalone notice:
 > this project runs a modified Next.js 16, so read the relevant guide in
-> `node_modules/next/dist/docs/` for framework behavior, **and** read the matching file(s)
-> under [docs/](docs/) (see "Documentation" below) for this app's own conventions —
-> BEFORE writing any code, every time, no exceptions.
+> `node_modules/next/dist/docs/` for framework behavior.
 
 ## Project Overview
 
@@ -32,15 +30,6 @@ The app is early-stage: [db/schema.ts](db/schema.ts) is not yet populated and
 
 > [!IMPORTANT]
 > **Terminal & Commands:** When in a windows environent, only run commands in the command prompt — do not > use PowerShell or any other terminal.
-
-## Documentation
-
-Detailed, topic-specific conventions live under [docs/](docs/). ALWAYS read the
-relevant file(s) BEFORE writing ANY code in that area — this is required, not
-optional, and applies even for small or seemingly obvious changes:
-
-- [docs/authentication.md](docs/authentication.md) — Clerk auth, protected routes, modal sign-in/sign-up
-- [docs/ui-components.md](docs/ui-components.md) — shadcn/ui-only components, no custom UI
 
 ## Coding Standards (summary)
 
